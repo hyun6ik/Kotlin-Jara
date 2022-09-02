@@ -1,4 +1,4 @@
-package com.hyun6ik
+package hyun6ik
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
