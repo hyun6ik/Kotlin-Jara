@@ -1,6 +1,6 @@
 package hyun6ik.issueservice.domain.issue.service
 
-import hyun6ik.issueservice.domain.issue.entity.Issue
+import hyun6ik.issueservice.domain.issue.entity.enums.IssueStatus
 import hyun6ik.issueservice.infrastructure.issue.IssueReader
 import hyun6ik.issueservice.infrastructure.issue.IssueStore
 import hyun6ik.issueservice.interfaces.issue.dto.request.IssueRequest
@@ -21,5 +21,9 @@ class IssueService(
         val issue = issueStore.store(initIssue)
         return IssueResponse.of(issue)
     }
+
+    fun getAll(
+        status: IssueStatus
+    ) = issueReader.getAllBy(status)
 
 }
