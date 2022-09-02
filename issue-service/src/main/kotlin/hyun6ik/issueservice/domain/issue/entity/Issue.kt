@@ -1,9 +1,9 @@
-package hyun6ik.issueservice.domain.issue
+package hyun6ik.issueservice.domain.issue.entity
 
 import hyun6ik.issueservice.domain.base.BaseEntity
-import hyun6ik.issueservice.domain.issue.enums.IssuePriority
-import hyun6ik.issueservice.domain.issue.enums.IssueStatus
-import hyun6ik.issueservice.domain.issue.enums.IssueType
+import hyun6ik.issueservice.domain.issue.entity.enums.IssuePriority
+import hyun6ik.issueservice.domain.issue.entity.enums.IssueStatus
+import hyun6ik.issueservice.domain.issue.entity.enums.IssueType
 import javax.persistence.*
 
 @Entity
@@ -33,5 +33,5 @@ class Issue(
     @Enumerated(EnumType.STRING)
     var status: IssueStatus,
 
-) : BaseEntity() {
+    ) : BaseEntity() {
 }

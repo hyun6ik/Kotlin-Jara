@@ -1,4 +1,4 @@
-package hyun6ik.issueservice.domain.issue.enums
+package hyun6ik.issueservice.domain.issue.entity.enums
 
 enum class IssuePriority {
 
