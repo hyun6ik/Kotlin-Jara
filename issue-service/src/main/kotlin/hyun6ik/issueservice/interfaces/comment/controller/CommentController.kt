@@ -1,0 +1,26 @@
+package hyun6ik.issueservice.interfaces.comment.controller
+
+import hyun6ik.issueservice.application.CommentFacade
+import hyun6ik.issueservice.global.argumentResolver.AuthUser
+import hyun6ik.issueservice.interfaces.comment.dto.request.CommentRequest
+import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
+import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RestController
+
+@RestController
+@RequestMapping("/api/v1/issues/{issueId}/comments")
+class CommentController(
+    private val commentFacade: CommentFacade,
+) {
+
+    @PostMapping
+    fun create(
+        authUser: AuthUser,
+        @PathVariable issueId: Long,
+        @RequestBody request: CommentRequest,
+    ) = ResponseEntity.ok(commentFacade.create(issueId, authUser.userId, authUser.username, request))
+
+}

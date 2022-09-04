@@ -1,6 +1,8 @@
 package hyun6ik.issueservice.domain.issue.entity
 
 import hyun6ik.issueservice.domain.base.BaseEntity
+import hyun6ik.issueservice.domain.comment.entity.Comment
+import hyun6ik.issueservice.domain.comment.entity.Comments
 import hyun6ik.issueservice.domain.issue.entity.enums.IssuePriority
 import hyun6ik.issueservice.domain.issue.entity.enums.IssueStatus
 import hyun6ik.issueservice.domain.issue.entity.enums.IssueType
@@ -14,6 +16,9 @@ class Issue(
 
     @Column
     val userId: Long,
+
+    @Embedded
+    var comments : Comments = Comments(mutableListOf()),
 
     @Column
     var summary: String,
@@ -47,5 +52,9 @@ class Issue(
         this.type = type
         this.priority = priority
         this.status = status
+    }
+
+    fun addComment(comment: Comment) {
+        comments.add(comment)
     }
 }

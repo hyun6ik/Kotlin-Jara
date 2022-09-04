@@ -51,4 +51,6 @@ class IssueService(
         issueStore.deleteIssueBy(id)
     }
 
+    fun getIssueBy(issueId: Long) = issueReader.getIssueBy(issueId)
+
 }
