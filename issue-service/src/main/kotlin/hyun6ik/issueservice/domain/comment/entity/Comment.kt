@@ -26,5 +26,9 @@ class Comment(
     val id: Long? = null,
 ) : BaseEntity() {
 
+    fun update(body: String) {
+        this.body = body
+    }
+
 
 }

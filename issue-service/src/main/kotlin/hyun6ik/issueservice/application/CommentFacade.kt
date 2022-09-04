@@ -31,4 +31,5 @@ class CommentFacade(
         )
         return commentService.create(issue, initComment)
     }
+
 }
