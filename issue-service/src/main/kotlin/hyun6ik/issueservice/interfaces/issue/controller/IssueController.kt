@@ -24,4 +24,10 @@ class IssueController(
         authUser: AuthUser,
         @RequestParam(required = false, defaultValue = "TODO") status: IssueStatus,
     ) = ResponseEntity.ok(issueService.getAll(status))
+
+    @GetMapping("/{id}")
+    fun get(
+        authUser: AuthUser,
+        @PathVariable id: Long,
+    ) = ResponseEntity.ok(issueService.get(id))
 }

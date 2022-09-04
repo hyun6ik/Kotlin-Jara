@@ -26,4 +26,9 @@ class IssueService(
         status: IssueStatus
     ) = issueReader.getAllBy(status)
 
+    fun get(id: Long): IssueResponse {
+        val issue = issueReader.getIssueBy(id)
+        return IssueResponse.of(issue)
+    }
+
 }
