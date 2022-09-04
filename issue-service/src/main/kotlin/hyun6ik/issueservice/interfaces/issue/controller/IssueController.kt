@@ -4,6 +4,7 @@ import hyun6ik.issueservice.domain.issue.entity.enums.IssueStatus
 import hyun6ik.issueservice.domain.issue.service.IssueService
 import hyun6ik.issueservice.global.argumentResolver.AuthUser
 import hyun6ik.issueservice.interfaces.issue.dto.request.IssueRequest
+import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
@@ -37,4 +38,13 @@ class IssueController(
         @PathVariable id: Long,
         @RequestBody request: IssueRequest,
     ) = ResponseEntity.ok(issueService.update(authUser.userId, id, request))
+
+    @DeleteMapping("{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    fun delete(
+        authUser: AuthUser,
+        @PathVariable id: Long,
+    ) {
+        issueService.delete(id)
+    }
 }

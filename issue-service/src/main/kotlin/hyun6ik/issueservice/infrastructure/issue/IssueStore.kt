@@ -8,4 +8,8 @@ class IssueStore(
     private val issueRepository: IssueRepository,
 ) {
     fun store(issue: Issue): Issue = issueRepository.save(issue)
+
+    fun deleteIssueBy(id: Long) {
+        issueRepository.deleteById(id)
+    }
 }

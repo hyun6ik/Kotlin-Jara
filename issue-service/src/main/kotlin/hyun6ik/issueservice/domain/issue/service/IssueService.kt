@@ -46,4 +46,9 @@ class IssueService(
         }
     }
 
+    @Transactional
+    fun delete(id: Long) {
+        issueStore.deleteIssueBy(id)
+    }
+
 }
