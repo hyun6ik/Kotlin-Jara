@@ -31,4 +31,19 @@ class IssueService(
         return IssueResponse.of(issue)
     }
 
+    @Transactional
+    fun update(userId: Long, id: Long, request: IssueRequest): IssueResponse {
+        val issue = issueReader.getIssueBy(id)
+        return with(issue) {
+            update(
+                request.summary,
+                request.description,
+                request.type,
+                request.priority,
+                request.status
+            )
+            IssueResponse.of(this)
+        }
+    }
+
 }

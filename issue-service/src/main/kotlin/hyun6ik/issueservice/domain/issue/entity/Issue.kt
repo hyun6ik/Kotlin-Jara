@@ -34,4 +34,18 @@ class Issue(
     var status: IssueStatus,
 
     ) : BaseEntity() {
+
+    fun update(
+        summary: String,
+        description: String,
+        type: IssueType,
+        priority: IssuePriority,
+        status: IssueStatus,
+    ) {
+        this.summary = summary
+        this.description = description
+        this.type = type
+        this.priority = priority
+        this.status = status
+    }
 }

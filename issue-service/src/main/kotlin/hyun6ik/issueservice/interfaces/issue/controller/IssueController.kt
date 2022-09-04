@@ -30,4 +30,11 @@ class IssueController(
         authUser: AuthUser,
         @PathVariable id: Long,
     ) = ResponseEntity.ok(issueService.get(id))
+
+    @PutMapping("{id}")
+    fun update(
+        authUser: AuthUser,
+        @PathVariable id: Long,
+        @RequestBody request: IssueRequest,
+    ) = ResponseEntity.ok(issueService.update(authUser.userId, id, request))
 }
