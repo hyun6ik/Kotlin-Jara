@@ -31,4 +31,6 @@ class CommentService(
         }.toResponse()
     }
 
+    fun getCommentBy(id: Long, userId: Long) = commentReader.getCommentBy(id, userId)
+
 }

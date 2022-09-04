@@ -4,6 +4,7 @@ import hyun6ik.issueservice.application.CommentFacade
 import hyun6ik.issueservice.domain.comment.service.CommentService
 import hyun6ik.issueservice.global.argumentResolver.AuthUser
 import hyun6ik.issueservice.interfaces.comment.dto.request.CommentRequest
+import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
@@ -29,4 +30,13 @@ class CommentController(
         @RequestBody request: CommentRequest,
     ) = ResponseEntity.ok(commentService.update(id, authUser.userId, request))
 
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    fun delete(
+        authUser: AuthUser,
+        @PathVariable issueId: Long,
+        @PathVariable id: Long,
+    ) {
+        commentFacade.delete(issueId, id, authUser.userId)
+    }
 }

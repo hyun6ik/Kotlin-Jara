@@ -32,4 +32,12 @@ class CommentFacade(
         return commentService.create(issue, initComment)
     }
 
+    @Transactional
+    fun delete(issueId: Long, id: Long, userId: Long) {
+        val issue = issueService.getIssueBy(issueId)
+        commentService.getCommentBy(id, userId).let {
+           comment -> issue.removeComment(comment)
+        }
+    }
+
 }

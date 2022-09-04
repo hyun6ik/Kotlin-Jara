@@ -22,4 +22,8 @@ class Comments(
         return comments.sortedByDescending(Comment::id)
             .map(Comment::toResponse)
     }
+
+    fun remove(comment: Comment) {
+        comments.remove(comment)
+    }
 }
