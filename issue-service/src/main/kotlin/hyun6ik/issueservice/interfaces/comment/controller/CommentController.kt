@@ -5,12 +5,7 @@ import hyun6ik.issueservice.domain.comment.service.CommentService
 import hyun6ik.issueservice.global.argumentResolver.AuthUser
 import hyun6ik.issueservice.interfaces.comment.dto.request.CommentRequest
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.PutMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/v1/issues/{issueId}/comments")
@@ -29,7 +24,9 @@ class CommentController(
     @PutMapping("/{id}")
     fun update(
         authUser: AuthUser,
+        @PathVariable issueId: Long,
         @PathVariable id: Long,
         @RequestBody request: CommentRequest,
     ) = ResponseEntity.ok(commentService.update(id, authUser.userId, request))
+
 }
