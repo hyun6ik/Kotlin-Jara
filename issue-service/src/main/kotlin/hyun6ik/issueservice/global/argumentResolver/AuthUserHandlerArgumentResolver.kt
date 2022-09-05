@@ -1,7 +1,8 @@
 package hyun6ik.issueservice.global.argumentResolver
 
-import com.fasterxml.jackson.annotation.JsonProperty
+import hyun6ik.issueservice.global.annotation.Auth
 import hyun6ik.issueservice.global.exception.UnAuthorizedException
+import hyun6ik.issueservice.global.model.AuthUser
 import kotlinx.coroutines.runBlocking
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.core.MethodParameter
@@ -20,7 +21,8 @@ class AuthUserHandlerArgumentResolver(
 
 ) : HandlerMethodArgumentResolver {
     override fun supportsParameter(parameter: MethodParameter): Boolean {
-        return AuthUser::class.java.isAssignableFrom(parameter.parameterType)
+        return parameter.hasParameterAnnotation(Auth::class.java)
+        // return AuthUser::class.java.isAssignableFrom(parameter.parameterType)
     }
 
     override fun resolveArgument(
@@ -42,11 +44,3 @@ class AuthUserHandlerArgumentResolver(
         }
     }
 }
-
-data class AuthUser(
-    @JsonProperty("id")
-    val userId: Long,
-    val username: String,
-    val profileUrl: String? = null,
-    val email: String,
-)
