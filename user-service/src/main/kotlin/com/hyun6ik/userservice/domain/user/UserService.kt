@@ -83,4 +83,6 @@ class UserService(
         }
         return MeResponse.of(cachedUser)
     }
+
+    suspend fun getBy(userId: Long) = userReader.getUserBy(userId)
 }
