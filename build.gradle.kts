@@ -1,3 +1,4 @@
+
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -6,6 +7,8 @@ plugins {
     kotlin("jvm") version "1.6.21"
     kotlin("plugin.spring") version "1.6.21"
     kotlin("plugin.jpa") version "1.6.21"
+
+    id("org.jlleitschuh.gradle.ktlint") version "10.1.0"
 }
 
 java.sourceCompatibility = JavaVersion.VERSION_17
@@ -25,7 +28,7 @@ subprojects {
     apply(plugin = "io.spring.dependency-management")
 
     dependencies {
-        //JWT 인증
+        // JWT 인증
         implementation("com.auth0:java-jwt:3.19.2")
 
         // Kotlin Logging
@@ -57,5 +60,4 @@ subprojects {
     tasks.withType<Test> {
         useJUnitPlatform()
     }
-
 }
