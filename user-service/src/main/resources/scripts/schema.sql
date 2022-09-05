@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS users;
 CREATE TABLE users
 (
     id bigint NOT NULL AUTO_INCREMENT,
-    email varchar100,
+    email varchar(100),
     name varchar(50),
     password varchar(500),
     profile_url varchar(500),
