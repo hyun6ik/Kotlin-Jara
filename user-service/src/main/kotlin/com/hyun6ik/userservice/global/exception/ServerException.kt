@@ -9,3 +9,12 @@ sealed class ServerException(
 data class UserExistsException(
     override val message: String = "이미 존재하는 유저입니다.",
 ) : ServerException(409, message)
+
+data class UserNotFoundException(
+    override val message: String = "해당 유저를 찾을 수 없습니다."
+) : ServerException(404, message)
+
+data class PasswordNotMatchedException(
+    override val message: String = "비밀번호가 일치하지 않습니다."
+) : ServerException(400, message)
+

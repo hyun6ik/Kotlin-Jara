@@ -1,6 +1,7 @@
 package com.hyun6ik.userservice.interfaces.user.controller
 
 import com.hyun6ik.userservice.domain.user.UserService
+import com.hyun6ik.userservice.interfaces.user.dto.request.SignInRequest
 import com.hyun6ik.userservice.interfaces.user.dto.request.SignUpRequest
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping
@@ -17,4 +18,8 @@ class UserController(
     @PostMapping("/signup")
     suspend fun signUp(@RequestBody request: SignUpRequest) =
         ResponseEntity.ok(userService.signUp(request))
+
+    @PostMapping("/signin")
+    suspend fun signIn(@RequestBody request: SignInRequest) =
+        ResponseEntity.ok(userService.signIn(request))
 }
