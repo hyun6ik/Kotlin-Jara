@@ -18,3 +18,6 @@ data class PasswordNotMatchedException(
     override val message: String = "비밀번호가 일치하지 않습니다."
 ) : ServerException(400, message)
 
+data class InvalidJwtTokenException(
+    override val message: String = "유효하지 않는 토큰 않습니다."
+) : ServerException(400, message)
