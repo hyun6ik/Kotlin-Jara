@@ -1,3 +1,3 @@
 rootProject.name = "kotlin-Jara"
-include("issue-service")
-include("user-service")
+include("jara-issue")
+include("jara-user")
